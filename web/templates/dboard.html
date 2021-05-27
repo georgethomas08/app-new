@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+  <form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.freqValue.label }} <br>
+      {{ form.freqValue(size=4) }}
+      {% for error in form.freqValue.errors %}
+      <span style="color: red;">[{{error}}]</span>
+      {% endfor %}
+      {{ form.freqUnit() }}{{ form.freqUnit.label }}
+      {{ form.freqSubmit() }}
+    </p>
+  </form>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4"">
+      <canvas id="tChart" width="450px" height="400px"></canvas>
+      <table id="tTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="tbutton" align="center" >Refresh</button>
+    </div>
+    <div class="col-md-4"">
+      <canvas id="hChart" width="450px" height="400px"></canvas>
+      <table id="hTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="hbutton" align="center" >Refresh</button>
+    </div>
+    <div class="col-md-4"">
+      <canvas id="pChart" width="450px" height="400px"></canvas>
+      <table id="pTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="pbutton" align="center" >Refresh</button>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-4"">
+      <canvas id="rlChart" width="450px" height="400px"></canvas>
+      <table id="rlTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="rlbutton" align="center" >Refresh</button>
+    </div>
+    <div class="col-md-4"">
+      <canvas id="rfChart" width="450px" height="400px"></canvas>
+      <table id="rfTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="rfbutton" align="center" >Refresh</button>
+    </div>
+    <div class="col-md-4"">
+      <canvas id="slChart" width="450px" height="400px"></canvas>
+      <table id="slTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="slbutton" align="center" >Refresh</button>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-4"">
+      <canvas id="spChart" width="450px" height="400px"></canvas>
+      <table id="spTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="spbutton" align="center" >Refresh</button>
+    </div>
+    <div class="col-md-4"">
+      <canvas id="stChart" width="450px" height="400px"></canvas>
+      <table id="stTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="stbutton" align="center" >Refresh</button>
+    </div>
+    <div class="col-md-4"">
+      <canvas id="vxChart" width="450px" height="400px"></canvas>
+      <table id="vxTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="vxbutton" align="center" >Refresh</button>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-4"">
+      <canvas id="vyChart" width="450px" height="400px"></canvas>
+      <table id="vyTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="vybutton" align="center" >Refresh</button>
+    </div>
+    <div class="col-md-4"">
+      <canvas id="arsChart" width="450px" height="400px"></canvas>
+      <table id="arsTable">
+       <tr><td>Min</td><td>Max</td><td>Avg</td></tr>
+       <tr><td>0</td><td>0</td><td>0</td></tr>
+      </table>
+      <button id="arsbutton" align="center" >Refresh</button>
+    </div>    
+  </div>
+</div>
+{% endblock %}

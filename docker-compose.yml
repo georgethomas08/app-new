@@ -1,0 +1,124 @@
+version: '3'
+
+services:
+  web:
+    restart: always
+    build: ./web
+    expose:
+      - "8000"
+    links:
+      - mongodb:mongodb
+    volumes:
+      - web-data:/usr/src/app/static
+    environment:
+      FLASK_DEBUG: 1
+      DEBUG: 1
+      SECRET_KEY: 5(15ds+i2+%ik6z&!yer+ga9m:e%jcqiz_5wszg)r-z!2--b2d
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_SERVICE: postgres
+      DB_PORT: 5432
+      POSTGRES_VERSION: 9.6-alpine
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: edgviz
+      COMPOSE_PROJECT_NAME: EDGVIZ
+      MONGODB_DATABASE: edgedb
+      MONGODB_USERNAME: edgedbuser
+      MONGODB_PASSWORD: edgedb
+      MONGO_URL: mongodb://mongodb:27017
+
+    command: /usr/local/bin/gunicorn --access-logfile - --error-logfile - --log-level debug -w 2 -t 120 --graceful-timeout 120 -b :8000 app:app
+    #command: flask run --host=0.0.0.0 --port=8000
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - .:/www/static
+      - web-data:/usr/src/app/static
+    links:
+      - web:web
+
+  mongodb:
+    image: mongo:4.0.8
+    restart: always
+    command: mongod --auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongodbuser
+      MONGO_INITDB_ROOT_PASSWORD: mdb_user
+      MONGO_INITDB_DATABASE: edgedb
+      MONGODB_DATA_DIR: /data/db
+      MONDODB_LOG_DIR: /dev/null
+    volumes:
+      - mongodbdata:/data/db
+    ports:
+      - "27017:27017"
+#    networks:
+#      - backend
+
+  mongoClientTemp:
+   image: mongo:4.0.8
+#   restart: never
+   container_name: mongoClientTemp
+   links:
+    - mongodb:mongodb
+   command: mongo -u mongodbuser -p mdb_user --host mongodb --eval  "db.getSiblingDB('edgedb').createUser({user:'edgedbuser', pwd:'edgedb', roles:[{role:'readWrite',db:'edgedb'}]});"
+   depends_on:
+    - mongodb
+    - web
+  
+  spark:
+    image: docker.io/bitnami/spark:3
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf
+      - ./jars_dir:/opt/bitnami/spark/ivy:z
+      - ./pgms:/pgms
+     
+      
+  spark-worker-1:
+    image: docker.io/bitnami/spark:3
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf
+      - ./jars_dir:/opt/bitnami/spark/ivy:z
+  
+      
+  spark-worker-2:
+    image: docker.io/bitnami/spark:3
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf
+      - ./jars_dir:/opt/bitnami/spark/ivy:z
+         
+     
+volumes:
+  web-data:
+  mongodbdata:

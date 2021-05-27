@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> Select Configuration </h1>
+   <p>Modbus Configuration <a href="{{ url_for('modbus') }}">Click Here!</a></p>
+   <p>LoRa Configuration <a href="{{ url_for('lora') }}">Click Here!</a></p>
+  {% endblock %}

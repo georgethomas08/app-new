@@ -1,0 +1,219 @@
+body {
+  margin:10;
+  padding:5;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+/*
+ * Formatting the header area
+ */
+#header-main {
+  height: 10%;
+  background-color: #2F4F5F;
+}
+
+#header-main img{
+  height: 80%;
+  width: 6%;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: white;
+  align-content: center;
+  box-sizing: border-box;
+  border: 2px solid #2F4F5F;
+  padding: 5px;
+}
+
+#header-main h1{
+  float:right;
+  height: 6%;
+  font-size:40px;
+  color: white;
+  background-color: #2F4F5F;
+  width:90%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: initial;
+}
+
+#site-menu{
+  background-color: #8FBC8F;
+  color: #ffffff;
+}
+
+#site-menu ul{
+  float: left;
+  list-style: none;
+  padding: 0;
+}
+
+#site-menu li{
+  display: inline-block;
+}
+
+#site-menu a{
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  padding-right: 15px;
+}
+
+#main-menu{
+  float:left;
+  width:50%;
+  height: 350px;
+  border: 1px solid red;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#main-menu img{
+  height: 100px;
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#main-menu row{
+  padding:30px;
+}
+
+.main-menu-item{
+  margin-top: 30px;
+  margin-left: 50px;
+  width:150px;
+  height:130px;
+  align-content: center;
+}
+
+.main-menu-item p{
+  text-align: center;
+  margin-top: 2px;
+  font-size: 15px;
+  padding:0px;
+  color: blue;
+}
+
+.main-menu-item:hover{
+  border-bottom: 5px solid yellow;
+  /*background-color: #C0C0C0;*/
+}
+
+#tTable, #hTable, #pTable, #rlTable, #rfTable, #slTable, #spTable, #stTable, #vxTable, #vyTable, #arsTable{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#tTable td, #tTable th, #hTable td, #hTable th, #pTable td, #pTable th, #rlTable td, #rlTable th, #rfTable td, #rfTable th, #slTable td, #slTable th, #spTable td, #spTable th, #stTable td, #stTable th, #vxTable td, #vxTable th, #vyTable td, #vyTable th, #arsTable td, #arsTable th  {
+  border: 2px solid #ddd;
+  padding: 8px;
+}
+
+#tTable tr:nth-child(odd), #hTable tr:nth-child(odd), #pTable tr:nth-child(odd), #rlTable tr:nth-child(odd), #rfTable tr:nth-child(odd), #slTable tr:nth-child(odd), #spTable tr:nth-child(odd), #stTable tr:nth-child(odd), #vxTable tr:nth-child(odd), #vyTable tr:nth-child(odd), #arsTable tr:nth-child(odd){
+  background-color: #f2f2f2;
+  font-weight: bold
+}
+
+#tTable tr:hover, #hTable tr:hover, #pTable tr:hover, #rlTable tr:hover, #rfTable tr:hover, #slTable tr:hover, #spTable tr:hover, #stTable tr:hover, #vxTable tr:hover, #vyTable tr:hover, #arsTable tr:hover {
+  background-color: #ddd;
+}
+
+#tTable th, #hTable th, #pTable th, #rlTable th, #rfTable th, #slTable th, #spTable th, #stTable th, #vxTable th, #vyTable th, #arsTable th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#sub-menu{
+  float:left;
+  width:40%;
+  height:350px;
+  border: 1px solid blue;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#sub-menu img{
+  height: 50px;
+  width: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#sub-menu row{
+  padding:0px;
+}
+
+.sub-menu-item{
+  margin-top: 30px;
+  margin-left: 50px;
+  width:75px;
+  height:75px;
+  align-content: center;
+}
+
+.sub-menu-item p{
+  text-align: center;
+  margin-top: 2px;
+  font-size: 15px;
+  padding:0px;
+  color: blue;
+}
+
+.sub-menu-item:hover{
+  border-bottom: 5px solid yellow;
+  /*background-color: #C0C0C0;*/
+}
+
+.divclr {
+    clear: left;
+}
+
+#footer-main{
+  margin-top: 100px;
+  background-color: #2F4F4F;
+  color: #ffffff;
+  text-align: center;
+}
+
+.modal-hdr{
+  background-color: blue;
+  color: white;
+}
+
+h2.modal-title{
+  color: white;
+  font-size:16px;
+}
+
+.modal-bdy{
+  background-color: lightblue;
+  color: white;
+}
+
+.modal-ftr{
+  height: 40px;
+  background-color: lightblue;
+  color: white;
+}
+
+.input-icon{
+  position: absolute;
+  left: 3px;
+  top: calc(50% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+}
+input{
+  padding-left: 17px;
+}
+.input-wrapper{
+  position: relative;
+}
